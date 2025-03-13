@@ -1,16 +1,17 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 import { createNftCommand } from './commands/createNft';
 
-const program = new Command();
-
-program
-  .name('urc')
-  .description('Onchain CLI toolset for Under Realm game')
-  .version('1.0.0');
-
-// Register commands
-program.addCommand(createNftCommand);
-
-program.parse();
+yargs(hideBin(process.argv))
+  .scriptName('urc')
+  .usage('Usage: $0 <command> [options]')
+  .epilogue('Onchain CLI toolset for Under Realm game')
+  .version('1.0.0')
+  .command(createNftCommand)
+  .demandCommand(1, 'You need to specify a command')
+  .strict()
+  .help()
+  .alias('h', 'help')
+  .parse();

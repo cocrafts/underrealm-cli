@@ -114,6 +114,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metaplex-foundation/mpl-core-candy-machine@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@metaplex-foundation/mpl-core-candy-machine@npm:0.3.0"
+  dependencies:
+    "@metaplex-foundation/mpl-token-metadata": "npm:3.0.0-alpha.27"
+    "@metaplex-foundation/mpl-toolbox": "npm:^0.9.0"
+    "@noble/hashes": "npm:^1.2.0"
+    merkletreejs: "npm:^0.3.9"
+  peerDependencies:
+    "@metaplex-foundation/mpl-core": ">= 0.4.7"
+    "@metaplex-foundation/umi": ">= 0.8.2 <= 1"
+  checksum: 10c0/8b7f8be5c692e497e96d8c5842715cf47b5c86feaa0b5f81ba0322b4ea2d37c8ab618266d1a1a233604de2f98804a582763ad7c7cfae49dee6ab964fc1edcc51
+  languageName: node
+  linkType: hard
+
 "@metaplex-foundation/mpl-core@npm:1.2.0":
   version: 1.2.0
   resolution: "@metaplex-foundation/mpl-core@npm:1.2.0"
@@ -123,6 +138,17 @@ __metadata:
     "@metaplex-foundation/umi": ">=0.8.2 <= 1.0"
     "@noble/hashes": ^1.3.1
   checksum: 10c0/a025d920ee65217db68295ba06b9273fd3550544d5dbafc66e69c77d977966fc2708fd26ae734ad68f22ca01b7500038aef573c679085eb6c67329b08954e47e
+  languageName: node
+  linkType: hard
+
+"@metaplex-foundation/mpl-token-metadata@npm:3.0.0-alpha.27":
+  version: 3.0.0-alpha.27
+  resolution: "@metaplex-foundation/mpl-token-metadata@npm:3.0.0-alpha.27"
+  dependencies:
+    "@metaplex-foundation/mpl-toolbox": "npm:^0.9.0"
+  peerDependencies:
+    "@metaplex-foundation/umi": ^0.8.2
+  checksum: 10c0/0c00151616d0a2e38e352ba7be1cf6655d31486522787f2619e28d2d441f2834718bf9827901c062301315eac877a1f901a3764dd05592db541eb6c4592fa447
   languageName: node
   linkType: hard
 
@@ -146,7 +172,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metaplex-foundation/mpl-toolbox@npm:^0.9.4":
+"@metaplex-foundation/mpl-toolbox@npm:^0.9.0, @metaplex-foundation/mpl-toolbox@npm:^0.9.4":
   version: 0.9.4
   resolution: "@metaplex-foundation/mpl-toolbox@npm:0.9.4"
   peerDependencies:
@@ -368,7 +394,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@noble/hashes@npm:1.7.1, @noble/hashes@npm:^1.3.1, @noble/hashes@npm:^1.4.0":
+"@noble/hashes@npm:1.7.1, @noble/hashes@npm:^1.2.0, @noble/hashes@npm:^1.3.1, @noble/hashes@npm:^1.4.0":
   version: 1.7.1
   resolution: "@noble/hashes@npm:1.7.1"
   checksum: 10c0/2f8ec0338ccc92b576a0f5c16ab9c017a3a494062f1fbb569ae641c5e7eab32072f9081acaa96b5048c0898f972916c818ea63cbedda707886a4b5ffcfbf94e3
@@ -501,15 +527,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/commander@npm:^2.12.5":
-  version: 2.12.5
-  resolution: "@types/commander@npm:2.12.5"
-  dependencies:
-    commander: "npm:*"
-  checksum: 10c0/2ac2607329b83a74df0c86bba035edd8e9a6191a520cca20f360cef6fa7d7d755de1c006b86a73933394abacd7622a339b508bb6b467dd06cdee7b6ef35ec66c
-  languageName: node
-  linkType: hard
-
 "@types/connect@npm:^3.4.33":
   version: 3.4.38
   resolution: "@types/connect@npm:3.4.38"
@@ -557,6 +574,22 @@ __metadata:
   dependencies:
     "@types/node": "npm:*"
   checksum: 10c0/a56d2e0d1da7411a1f3548ce02b51a50cbe9e23f025677d03df48f87e4a3c72e1342fbf1d12e487d7eafa8dc670c605152b61bbf9165891ec0e9694b0d3ea8d4
+  languageName: node
+  linkType: hard
+
+"@types/yargs-parser@npm:*, @types/yargs-parser@npm:21":
+  version: 21.0.3
+  resolution: "@types/yargs-parser@npm:21.0.3"
+  checksum: 10c0/e71c3bd9d0b73ca82e10bee2064c384ab70f61034bbfb78e74f5206283fc16a6d85267b606b5c22cb2a3338373586786fed595b2009825d6a9115afba36560a0
+  languageName: node
+  linkType: hard
+
+"@types/yargs@npm:17.0.33":
+  version: 17.0.33
+  resolution: "@types/yargs@npm:17.0.33"
+  dependencies:
+    "@types/yargs-parser": "npm:*"
+  checksum: 10c0/d16937d7ac30dff697801c3d6f235be2166df42e4a88bf730fa6dc09201de3727c0a9500c59a672122313341de5f24e45ee0ff579c08ce91928e519090b7906b
   languageName: node
   linkType: hard
 
@@ -796,6 +829,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cliui@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "cliui@npm:8.0.1"
+  dependencies:
+    string-width: "npm:^4.2.0"
+    strip-ansi: "npm:^6.0.1"
+    wrap-ansi: "npm:^7.0.0"
+  checksum: 10c0/4bda0f09c340cbb6dfdc1ed508b3ca080f12992c18d68c6be4d9cf51756033d5266e61ec57529e610dacbf4da1c634423b0c1b11037709cc6b09045cbd815df5
+  languageName: node
+  linkType: hard
+
 "color-convert@npm:^2.0.1":
   version: 2.0.1
   resolution: "color-convert@npm:2.0.1"
@@ -809,13 +853,6 @@ __metadata:
   version: 1.1.4
   resolution: "color-name@npm:1.1.4"
   checksum: 10c0/a1a3f914156960902f46f7f56bc62effc6c94e84b2cae157a526b1c1f74b677a47ec602bf68a61abfa2b42d15b7c5651c6dbe72a43af720bc588dff885b10f95
-  languageName: node
-  linkType: hard
-
-"commander@npm:*, commander@npm:13.1.0":
-  version: 13.1.0
-  resolution: "commander@npm:13.1.0"
-  checksum: 10c0/7b8c5544bba704fbe84b7cab2e043df8586d5c114a4c5b607f83ae5060708940ed0b5bd5838cf8ce27539cde265c1cbd59ce3c8c6b017ed3eec8943e3a415164
   languageName: node
   linkType: hard
 
@@ -937,6 +974,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"escalade@npm:^3.1.1":
+  version: 3.2.0
+  resolution: "escalade@npm:3.2.0"
+  checksum: 10c0/ced4dd3a78e15897ed3be74e635110bbf3b08877b0a41be50dcb325ee0e0b5f65fc2d50e9845194d7c4633f327e2e1c6cce00a71b617c5673df0374201d67f65
+  languageName: node
+  linkType: hard
+
 "ethereum-bloom-filters@npm:^1.0.6":
   version: 1.2.0
   resolution: "ethereum-bloom-filters@npm:1.2.0"
@@ -1019,6 +1063,13 @@ __metadata:
   dependencies:
     minipass: "npm:^7.0.3"
   checksum: 10c0/63e80da2ff9b621e2cb1596abcb9207f1cf82b968b116ccd7b959e3323144cce7fb141462200971c38bbf2ecca51695069db45265705bed09a7cd93ae5b89f94
+  languageName: node
+  linkType: hard
+
+"get-caller-file@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "get-caller-file@npm:2.0.5"
+  checksum: 10c0/c6c7b60271931fa752aeb92f2b47e355eac1af3a2673f47c9589e8f8a41adc74d45551c1bc57b5e66a80609f10ffb72b6f575e4370d61cc3f7f3aaff01757cde
   languageName: node
   linkType: hard
 
@@ -1249,7 +1300,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"merkletreejs@npm:^0.3.11":
+"merkletreejs@npm:^0.3.11, merkletreejs@npm:^0.3.9":
   version: 0.3.11
   resolution: "merkletreejs@npm:0.3.11"
   dependencies:
@@ -1515,6 +1566,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"require-directory@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "require-directory@npm:2.1.1"
+  checksum: 10c0/83aa76a7bc1531f68d92c75a2ca2f54f1b01463cb566cf3fbc787d0de8be30c9dbc211d1d46be3497dac5785fe296f2dd11d531945ac29730643357978966e99
+  languageName: node
+  linkType: hard
+
 "retry@npm:^0.12.0":
   version: 0.12.0
   resolution: "retry@npm:0.12.0"
@@ -1645,7 +1703,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"string-width-cjs@npm:string-width@^4.2.0, string-width@npm:^4.1.0":
+"string-width-cjs@npm:string-width@^4.2.0, string-width@npm:^4.1.0, string-width@npm:^4.2.0, string-width@npm:^4.2.3":
   version: 4.2.3
   resolution: "string-width@npm:4.2.3"
   dependencies:
@@ -1788,7 +1846,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsconfig-paths@npm:^4.2.0":
+"tsconfig-paths@npm:4.2.0":
   version: 4.2.0
   resolution: "tsconfig-paths@npm:4.2.0"
   dependencies:
@@ -1857,14 +1915,17 @@ __metadata:
   dependencies:
     "@metaplex-foundation/mpl-bubblegum": "npm:4.3.1"
     "@metaplex-foundation/mpl-core": "npm:1.2.0"
+    "@metaplex-foundation/mpl-core-candy-machine": "npm:^0.3.0"
     "@metaplex-foundation/umi": "npm:1.1.1"
     "@metaplex-foundation/umi-bundle-defaults": "npm:^1.1.1"
     "@solana/web3.js": "npm:1.98.0"
-    "@types/commander": "npm:^2.12.5"
-    commander: "npm:13.1.0"
+    "@types/yargs": "npm:17.0.33"
+    "@types/yargs-parser": "npm:21"
     ts-node: "npm:10.9.2"
-    tsconfig-paths: "npm:^4.2.0"
+    tsconfig-paths: "npm:4.2.0"
     typescript: "npm:5.8.2"
+    yargs: "npm:17.7.2"
+    yargs-parser: "npm:21.1.1"
   bin:
     ur-onchain: ./dist/index.js
   languageName: unknown
@@ -1958,7 +2019,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0":
+"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0, wrap-ansi@npm:^7.0.0":
   version: 7.0.0
   resolution: "wrap-ansi@npm:7.0.0"
   dependencies:
@@ -2010,6 +2071,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"y18n@npm:^5.0.5":
+  version: 5.0.8
+  resolution: "y18n@npm:5.0.8"
+  checksum: 10c0/4df2842c36e468590c3691c894bc9cdbac41f520566e76e24f59401ba7d8b4811eb1e34524d57e54bc6d864bcb66baab7ffd9ca42bf1eda596618f9162b91249
+  languageName: node
+  linkType: hard
+
 "yallist@npm:^4.0.0":
   version: 4.0.0
   resolution: "yallist@npm:4.0.0"
@@ -2030,6 +2098,28 @@ __metadata:
   bin:
     yaml: bin.mjs
   checksum: 10c0/886a7d2abbd70704b79f1d2d05fe9fb0aa63aefb86e1cb9991837dced65193d300f5554747a872b4b10ae9a12bc5d5327e4d04205f70336e863e35e89d8f4ea9
+  languageName: node
+  linkType: hard
+
+"yargs-parser@npm:21.1.1, yargs-parser@npm:^21.1.1":
+  version: 21.1.1
+  resolution: "yargs-parser@npm:21.1.1"
+  checksum: 10c0/f84b5e48169479d2f402239c59f084cfd1c3acc197a05c59b98bab067452e6b3ea46d4dd8ba2985ba7b3d32a343d77df0debd6b343e5dae3da2aab2cdf5886b2
+  languageName: node
+  linkType: hard
+
+"yargs@npm:17.7.2":
+  version: 17.7.2
+  resolution: "yargs@npm:17.7.2"
+  dependencies:
+    cliui: "npm:^8.0.1"
+    escalade: "npm:^3.1.1"
+    get-caller-file: "npm:^2.0.5"
+    require-directory: "npm:^2.1.1"
+    string-width: "npm:^4.2.3"
+    y18n: "npm:^5.0.5"
+    yargs-parser: "npm:^21.1.1"
+  checksum: 10c0/ccd7e723e61ad5965fffbb791366db689572b80cca80e0f96aad968dfff4156cd7cd1ad18607afe1046d8241e6fb2d6c08bf7fa7bfb5eaec818735d8feac8f05
   languageName: node
   linkType: hard
 

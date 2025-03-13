@@ -1,19 +1,50 @@
-import { Command } from 'commander';
+import { CommandModule } from 'yargs';
 import { initializeUmi, createCompressedNft } from 'utils/nft';
 
-export const createNftCommand = new Command('create-nft')
-  .description('Create a compressed NFT for Under Realm')
-  .requiredOption('-n, --name <name>', 'NFT name')
-  .requiredOption('-s, --symbol <symbol>', 'NFT symbol')
-  .requiredOption('-u, --uri <uri>', 'Metadata URI')
-  .option('-r, --rpc <url>', 'Custom RPC URL')
-  .action(async (options) => {
+interface CreateNftArgs {
+  name: string;
+  symbol: string;
+  uri: string;
+  rpc?: string;
+}
+
+export const createNftCommand: CommandModule<{}, CreateNftArgs> = {
+  command: 'create-nft',
+  describe: 'Create a compressed NFT for Under Realm',
+  builder: (yargs) => {
+    return yargs
+      .option('name', {
+        alias: 'n',
+        describe: 'NFT name',
+        type: 'string',
+        demandOption: true
+      })
+      .option('symbol', {
+        alias: 's',
+        describe: 'NFT symbol',
+        type: 'string',
+        demandOption: true
+      })
+      .option('uri', {
+        alias: 'u',
+        describe: 'Metadata URI',
+        type: 'string',
+        demandOption: true
+      })
+      .option('rpc', {
+        alias: 'r',
+        describe: 'Custom RPC URL',
+        type: 'string'
+      });
+  },
+  handler: async (argv) => {
     try {
-      const umi = initializeUmi(options.rpc);
-      await createCompressedNft(umi, options.name, options.symbol, options.uri);
+      const umi = initializeUmi(argv.rpc);
+      await createCompressedNft(umi, argv.name, argv.symbol, argv.uri);
       console.log('NFT created successfully');
     } catch (error) {
       console.error('Failed to create NFT:', error);
       process.exit(1);
     }
-  });
+  }
+};
