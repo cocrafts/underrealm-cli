@@ -1,0 +1,37 @@
+{
+  "name": "ur-onchain",
+  "version": "1.0.0",
+  "description": "Onchain CLI toolset for Under Realm game",
+  "main": "dist/index.js",
+  "bin": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node -r tsconfig-paths/register src/index.ts",
+    "dev": "ts-node -r tsconfig-paths/register src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "solana",
+    "nft",
+    "metaplex",
+    "trading-card-game",
+    "under-realm"
+  ],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "yarn@4.5.0",
+  "dependencies": {
+    "@metaplex-foundation/mpl-bubblegum": "4.3.1",
+    "@metaplex-foundation/mpl-core": "1.2.0",
+    "@metaplex-foundation/umi": "1.1.1",
+    "@metaplex-foundation/umi-bundle-defaults": "^1.1.1",
+    "@solana/web3.js": "1.98.0",
+    "commander": "13.1.0",
+    "ts-node": "10.9.2",
+    "typescript": "5.8.2"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.5",
+    "tsconfig-paths": "^4.2.0"
+  }
+}
