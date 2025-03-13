@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Mage Card #1",
+    "symbol": "MAGE",
+    "uri": "https://arweave.net/123456/metadata.json",
+    "collection": "Under Realm Mages",
+    "sellerFeeBasisPoints": 500
+  },
+  {
+    "name": "Warrior Card #2",
+    "symbol": "WARR",
+    "uri": "https://arweave.net/789012/metadata.json",
+    "collection": "Under Realm Warriors",
+    "sellerFeeBasisPoints": 500
+  },
+  {
+    "name": "Dragon Card #3",
+    "symbol": "DRAG",
+    "uri": "https://arweave.net/345678/metadata.json",
+    "collection": "Under Realm Dragons",
+    "sellerFeeBasisPoints": 750
+  }
+]

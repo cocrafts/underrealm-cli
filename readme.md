@@ -30,6 +30,27 @@ Optional: Specify a custom RPC URL:
 yarn start create-nft --name "Card Name" --symbol "CARD" --uri "https://metadata-url.com/card.json" --rpc "https://your-rpc-url.com"
 ```
 
+### Mint NFTs from JSON
+Mint multiple NFTs from a JSON file using Candy Machine:
+
+```bash
+yarn start mint-nfts --file ./sample-nfts.json --candyMachine CANDY_MACHINE_ADDRESS
+```
+
+JSON file format:
+```json
+[
+  {
+    "name": "Card Name",
+    "symbol": "CARD",
+    "uri": "https://metadata-url.com/card.json",
+    "collection": "Collection Name",
+    "sellerFeeBasisPoints": 500
+  }
+]
+```
+
 ## Key Features
 - Create and manage NFT for Under Realm game
 - Mint NFTs using compressed Core NFT (Metaplex Umi)
+- Batch mint NFTs from JSON files using Candy Machine
