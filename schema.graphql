@@ -1,0 +1,522 @@
+type Card {
+  components: GameEntity!
+  creatorId: ID
+  id: ID!
+  lastEditorId: ID
+}
+
+type CardBoardTarget {
+  id: String
+  index: Int
+  owner: String
+  place: String
+}
+
+type CardCollection {
+  cardIds: [ID!]!
+  cards: [Card!]
+  creatorId: ID!
+  id: ID!
+  name: String!
+}
+
+type CardCommandTarget {
+  from: CardBoardTarget
+  to: CardBoardTarget
+}
+
+type CardDuel {
+  config: CardDuelConfig
+  history: [CardDuelCommandBundle]
+  id: String
+}
+
+type CardDuelAttributes {
+  attack: Int
+  charge: Int
+  defense: Int
+  gameOver: Boolean
+  health: Int
+  perTurnHero: Int
+  perTurnTroop: Int
+  turn: Int
+}
+
+type CardDuelCommand {
+  owner: String
+  payload: CardDuelAttributes
+  target: CardCommandTarget
+  type: String!
+}
+
+type CardDuelCommandBundle {
+  commands: [CardDuelCommand]
+  group: String
+  phase: String
+  phaseOf: String
+  turn: Int
+}
+
+type CardDuelConfig {
+  firstMover: String!
+  firstPlayer: CardPlayerConfig!
+  secondPlayer: CardPlayerConfig!
+  setting: CardDuelSetting!
+  version: String!
+}
+
+type CardDuelHistory {
+  duel: CardDuel!
+  enemy: Profile
+  id: String
+  timestamp: String!
+  victory: Boolean
+}
+
+type CardDuelSetting {
+  groundSize: Int
+  handSize: Int
+  maxAttachment: Int
+  perTurnHero: Int
+  perTurnTroop: Int
+  playerHealth: Int
+}
+
+type CardMap {
+  cardId: String!
+  entityId: Int!
+}
+
+input CardMapInput {
+  cardId: String!
+  entityId: Int!
+}
+
+type CardPlayerConfig {
+  deck: [String]
+  id: String
+}
+
+input CreateCardCollectionInput {
+  name: String!
+}
+
+scalar DateTime
+
+type Deck {
+  cardIds: [ID!]
+  cards: [Card!]
+  id: ID!
+  name: String!
+  userId: ID
+}
+
+type Duel {
+  ecs: GameECS
+}
+
+scalar DuelConfig
+
+type DuelPlayerInfo {
+  avatarUrl: String!
+  id: String!
+  name: String!
+}
+
+type DuelResult {
+  duelId: ID!
+  newXP: Int!
+  previousXP: Int!
+  stats: DuelResultStats!
+  userId: ID!
+}
+
+type DuelResultStats {
+  bonusXP: Int
+  defeatXP: Int
+  victoryXP: Int
+}
+
+type DuelScenario {
+  cardMap: [CardMap!]!
+  description: String
+  initialECS: GameECS!
+  mainCard: String!
+  name: String
+}
+
+input DuelScenarioInput {
+  cardMap: [CardMapInput!]!
+  config: DuelConfig!
+  description: String
+  entities: GameEntity!
+  mainCard: String!
+  name: String
+  state: DuelState!
+}
+
+type DuelSimulation {
+  events: [GameEvent!]!
+  initialECS: GameECS!
+  playerIds: [String!]!
+}
+
+type DuelStarted {
+  id: String
+  jwt: String
+  message: DuelStartedMessage
+  players: [DuelPlayerInfo!]
+}
+
+enum DuelStartedMessage {
+  OPPONENT_REJECTED
+  YOU_REJECTED
+}
+
+scalar DuelState
+
+type DuelStats {
+  BLIND_DUEL: DuelsCount
+  BLIND_DUEL_PVE: DuelsCount
+  CLI_DUEL: DuelsCount
+  CLI_DUEL_PVE: DuelsCount
+  EDITOR_DUEL: DuelsCount
+  EDITOR_DUEL_PVE: DuelsCount
+  FRIEND_DUEL: DuelsCount
+  PRACTICE_DUEL: DuelsCount
+}
+
+type DuelTemplate {
+  creatorId: ID!
+  entities: GameEntity
+  id: ID!
+  refId: ID
+}
+
+type DuelTracking {
+  createdAt: DateTime!
+  date: String
+  duelStats: DuelStats!
+  totalDuels: Int
+  type: DuelTrackingType!
+  updatedAt: DateTime!
+  userId: String!
+  weekNumber: Int
+  year: Int
+}
+
+enum DuelTrackingType {
+  allTime
+  daily
+  weekly
+}
+
+type DuelsCount {
+  losses: Int!
+  total: Int!
+  wins: Int!
+}
+
+scalar GameComponent
+
+type GameDuel {
+  ecs: GameECS!
+  events: [GameEvent]!
+  id: ID!
+  initialECS: GameECS!
+  playerIds: [String!]!
+  tokens: [String!]!
+  type: String!
+}
+
+type GameECS {
+  config: DuelConfig!
+  entities: GameEntity!
+  state: DuelState!
+}
+
+scalar GameEntity
+
+scalar GameEvent
+
+type GeneralPointHistory {
+  id: String!
+  points: Int
+  type: String!
+  userId: String!
+}
+
+type Inventory {
+  id: String!
+  items: [InventoryItem!]!
+  userId: String!
+}
+
+type InventoryItem {
+  amount: Int!
+  itemId: String!
+  metadata: JSON
+  type: String!
+}
+
+scalar JSON
+
+type LeaderboardSeason {
+  id: ID!
+  name: String
+  number: Int!
+  startDate: DateTime!
+  weeklyPeriods: [Int!]!
+}
+
+enum LinkWalletResult {
+  SUCCESS
+  WALLET_ALREADY_LINKED
+  WALLET_DUPLICATED
+}
+
+input MakeDuelInput {
+  botMaxDelayMs: Int
+  botMinDelayMs: Int
+  config: DuelConfig!
+  entities: GameEntity!
+  playerIds: [String!]!
+  state: DuelState!
+  turnDurationMs: Int
+  type: MakeDuelType
+}
+
+enum MakeDuelType {
+  NORMAL
+  PVE
+}
+
+type MatchRecord {
+  id: ID!
+  pubsubTopic: String!
+  roomId: ID!
+  status: PlayerStatus
+  userId: ID!
+}
+
+input MutateProfileInput {
+  avatarUrl: String
+  name: String
+}
+
+type Mutation {
+  confirmJoinRoom(action: RoomAction, deckId: String!, roomId: ID!): Boolean
+  confirmStartDuel(approve: Boolean, roomId: ID!): Boolean
+  createCard(collectionId: ID!): GameEntity!
+  createCardCollection(input: CreateCardCollectionInput!): CardCollection!
+  createDeck(cardIds: [ID!]!, name: String!): Deck!
+  createDuelScenario(input: DuelScenarioInput!): DuelScenario!
+  createPracticeDuel(deckId: String!): PracticeDuel!
+  createQuestAction(questId: ID!): QuestAction
+  deleteCard(cardId: ID!, collectionId: ID!): Boolean
+  deleteCardComponent(cardId: ID!, collectionId: ID!, componentType: String!): GameEntity!
+  joinOrCreateRoom(code: String!): ID
+  makeDuel(input: MakeDuelInput!): GameDuel!
+  makeReferral(referralCode: String!): Boolean
+  openLottery: OpenLotteryResult
+  purchaseLottery: GeneralPointHistory
+  removeUserFromRoom: Boolean
+  requestWalletMessage(network: Network!, type: WalletMessageType, wallet: String!): String!
+  updateCard(cardId: ID!, collectionId: ID!, components: [GameComponent]!): GameEntity!
+  updateDeck(cardIds: [ID!]!, id: ID!, name: String): Deck!
+  updateProfile(profileInput: MutateProfileInput!): Profile
+  verifyAndLinkWallet(message: String!, network: Network!, signature: String!, wallet: String!): LinkWalletResult!
+  verifyWalletAndClaimToken(message: String!, network: Network!, signature: String!, wallet: String!): String!
+}
+
+enum Network {
+  SOLANA
+}
+
+type OpenLotteryResult {
+  items: [InventoryItem!]!
+  userId: ID!
+}
+
+type PlayerInRoom {
+  id: ID
+  status: PlayerStatus
+}
+
+enum PlayerStatus {
+  ACCEPTED
+  JOINED
+  PENDING
+  REJECTED
+}
+
+type PracticeDuel {
+  id: String!
+  jwt: String!
+}
+
+type Profile {
+  XP: Int!
+  avatarUrl: String
+  discordId: String
+  email: String
+  firebaseUID: String
+  id: String!
+  level: Int!
+  name: String
+  points: Int!
+  referralCode: String!
+  referred: ReferralHistory
+  solanaWallet: String
+  telegramId: String
+  twitterId: String
+}
+
+type Query {
+  card(id: ID!): Card!
+  cardCollection(id: ID!): CardCollection!
+  cardCollections: [CardCollection!]!
+  cardDuel(id: String!): CardDuel
+  cardDuelHistory(limit: Int): [CardDuelHistory]
+  cardDuelPlaying: CardDuelHistory
+  cardsInDeck(deckId: ID!): [Card!]!
+  currentLeaderboardSeason: LeaderboardSeason!
+  currentRank(periodNumber: Int, seasonId: ID, type: RankingType): UserRanking
+  currentRoom: Room
+  deck(id: ID!): Deck!
+  decks: [Deck!]!
+  duel(jwt: String!): Duel!
+  duelResult(duelId: ID!, userId: ID!): DuelResult!
+  duelScenarios(mainCardId: ID!): [DuelScenario]!
+  duelSimulation(jwt: String!): DuelSimulation!
+  duelTemplates: [DuelTemplate]!
+  duelTrackings: [DuelTracking!]
+  greeting: String
+  inventory: Inventory
+  leaderboard(limit: Int, periodNumber: Int, seasonId: ID, type: RankingType): [UserRanking!]
+  profile(address: String): Profile
+  quests(status: QuestStatus): [Quest!]!
+  referralHistory: [ReferralHistory!]
+}
+
+type Quest {
+  XP: Int
+  action: QuestAction
+  createdAt: DateTime!
+  description: String!
+  id: ID!
+  isCompleted: Boolean
+  points: Int!
+  repeatType: QuestRepeatType
+  requiredDuels: Int
+  status: QuestStatus!
+  title: String!
+  type: QuestType!
+  url: String!
+}
+
+type QuestAction {
+  claimedPoints: Int!
+  claimedXP: Int
+  createdAt: DateTime!
+  date: String
+  id: ID!
+  questId: ID!
+  type: QuestRepeatType
+  userId: ID!
+  weekNumber: Int
+  year: Int
+}
+
+enum QuestRepeatType {
+  DAILY
+  ONE_TIME
+  WEEKLY
+}
+
+enum QuestStatus {
+  DISABLE
+  INIT
+  LIVE
+}
+
+enum QuestType {
+  CHAT_DISCORD
+  COMMENT_X
+  FOLLOW_X
+  JOIN_DISCORD
+  LIKE_X
+  PLAY_GAME
+  RETWEET_X
+}
+
+enum RankingType {
+  SEASONAL
+  WEEKLY
+}
+
+type RankingUserInfo {
+  address: String
+  avatarUrl: String
+  email: String
+  id: ID!
+  name: String
+}
+
+type ReferralHistory {
+  claimedPoints: Int!
+  createdAt: DateTime!
+  id: ID!
+  refereeId: String!
+  refereeUser: Profile!
+  referrerId: String!
+}
+
+type Room {
+  code: String!
+  duelId: ID
+  id: ID!
+  isPrivate: Boolean
+  ownerId: ID
+  password: String
+  players: [PlayerInRoom]
+  status: RoomStatus!
+  title: String
+}
+
+enum RoomAction {
+  CANCEL
+  JOIN
+}
+
+enum RoomStatus {
+  CANCELLED
+  CLOSED
+  CONFIRMING
+  MATCHING
+  PLAYING
+}
+
+type Subscription {
+  counterIncreased: Int!
+  findOpponent(deckId: ID, userId: String!): ID!
+  startDuel(userId: ID!): DuelStarted!
+  waitForOpponentJoinRoom(roomId: ID!): Boolean
+}
+
+type UserRanking {
+  id: ID!
+  loseGames: Int!
+  periodNumber: Int!
+  points: Int!
+  rank: Int!
+  seasonId: ID!
+  type: RankingType!
+  user: RankingUserInfo!
+  winGames: Int!
+}
+
+enum WalletMessageType {
+  LINKING
+  SIGN_IN
+}
