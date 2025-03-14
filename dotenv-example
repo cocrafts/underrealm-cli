@@ -1,0 +1,2 @@
+GRAPHQL_API_ENDPOINT=http://localhost:3005/graphql
+GRAPHQL_API_JWT="..."

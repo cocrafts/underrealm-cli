@@ -6,6 +6,7 @@ module.exports = {
 		sourceType: 'module',
 	},
 	plugins: ['@typescript-eslint', 'simple-import-sort', 'prettier'],
+	ignorePatterns: ['src/utils/graphql/sdk.ts'],
 	extends: [
 		'eslint:recommended',
 		'plugin:import/typescript',
