@@ -1,5 +1,8 @@
-declare const SOLANA_CLUSTER: string;
-declare const GRAPHQL_API_ENDPOINT: string;
-declare const GRAPHQL_API_JWT: string;
-
-declare const DEFAULT_CARD_COLLECTION: string;
+declare namespace NodeJS {
+	interface ProcessEnv {
+		SOLANA_CLUSTER: string;
+		GRAPHQL_API_ENDPOINT: string;
+		GRAPHQL_API_JWT: string;
+		DEFAULT_CARD_COLLECTION: string;
+	}
+}

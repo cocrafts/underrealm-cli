@@ -1233,7 +1233,7 @@ export const CardDocument = gql`
 }
     `;
 export const CardCollectionDocument = gql`
-    query CardCollection($id: ID!) {
+    query cardCollection($id: ID!) {
   cardCollection(id: $id) {
     id
     creatorId
@@ -1503,8 +1503,8 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     Card(variables: CardQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<CardQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<CardQuery>(CardDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Card', 'query', variables);
     },
-    CardCollection(variables: CardCollectionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<CardCollectionQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<CardCollectionQuery>(CardCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CardCollection', 'query', variables);
+    cardCollection(variables: CardCollectionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<CardCollectionQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<CardCollectionQuery>(CardCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'cardCollection', 'query', variables);
     },
     cardCollections(variables?: CardCollectionsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<CardCollectionsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<CardCollectionsQuery>(CardCollectionsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'cardCollections', 'query', variables);

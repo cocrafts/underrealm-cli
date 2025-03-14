@@ -10,7 +10,7 @@ export const card = gql`
 `;
 
 export const cardCollection = gql`
-	query CardCollection($id: ID!) {
+	query cardCollection($id: ID!) {
 		cardCollection(id: $id) {
 			id
 			creatorId
